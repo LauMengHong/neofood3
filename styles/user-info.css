@@ -1,0 +1,29 @@
+.user-info {
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid var(--neon-blue);
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info p {
+    margin: 0;
+    color: var(--text-light);
+}
+
+.user-info strong {
+    color: var(--neon-blue);
+}
+
+.user-info .change-user {
+    background: none;
+    border: none;
+    color: var(--neon-purple);
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    font-size: 14px;
+}

@@ -1,0 +1,35 @@
+/* Side-by-side layout */
+.cart-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.cart-items {
+    width: 100%;
+}
+
+.cart-summary {
+    position: sticky !important;
+    top: 100px !important;
+    width: 100%;
+}
+
+/* Make items more centered */
+.item-price, .quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cart-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .cart-summary {
+        position: static !important;
+    }
+}

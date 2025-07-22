@@ -1,0 +1,38 @@
+/* Clean tech-styled Order Summary */
+.cart-summary {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.1);
+    width: 90%;
+    margin: 0 auto;
+}
+
+.cart-summary h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--neon-blue);
+}
+
+.summary-line {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-line.total {
+    padding-top: 15px;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    color: var(--neon-blue);
+}
+
+.checkout-btn {
+    padding: 12px;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    border-radius: 8px;
+    background: var(--neon-blue);
+}

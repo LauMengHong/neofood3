@@ -1,0 +1,117 @@
+/* Centered, balanced cart items with larger fonts */
+.cart-items {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+.cart-item {
+    padding: 18px 30px;
+    margin-bottom: 10px;
+    gap: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    width: 90%;
+    border-radius: 12px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 2;
+}
+
+.item-name {
+    font-size: 1.3rem;
+    color: var(--neon-blue);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.item-restaurant {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.item-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--neon-blue);
+    flex: 1;
+    text-align: center;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    justify-content: center;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    border-radius: 50%;
+}
+
+.qty-display {
+    font-size: 1.1rem;
+    min-width: 25px;
+    text-align: center;
+}
+
+.remove-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    border-radius: 50%;
+}
+
+/* Longer, thinner Order Summary */
+.cart-summary {
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 245, 255, 0.15);
+    width: 100%;
+    margin: 0 auto;
+    max-height: 400px;
+}
+
+.cart-summary h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--neon-blue);
+    text-shadow: 0 0 3px rgba(0, 245, 255, 0.4);
+}
+
+.summary-line {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-line.total {
+    padding-top: 15px;
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+
+.checkout-btn {
+    padding: 12px;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    border-radius: 8px;
+}

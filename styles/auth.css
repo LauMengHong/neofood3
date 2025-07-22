@@ -1,0 +1,189 @@
+/* Authentication Pages Styles */
+
+.auth-section {
+    padding: 120px 20px 40px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.auth-container {
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.auth-container h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+.auth-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.auth-form {
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+.password-strength {
+    height: 4px;
+    margin-top: 8px;
+    border-radius: 2px;
+    background: #333;
+    overflow: hidden;
+}
+
+.password-strength::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #ff0080, #00f5ff);
+    transition: width 0.3s ease;
+}
+
+.password-strength.weak::before {
+    width: 33%;
+    background: #ff0080;
+}
+
+.password-strength.medium::before {
+    width: 66%;
+    background: #ffcc00;
+}
+
+.password-strength.strong::before {
+    width: 100%;
+    background: #00f5ff;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-me input {
+    margin-right: 10px;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.auth-button:hover::before {
+    opacity: 1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+}
+
+.auth-redirect {
+    margin-top: 25px;
+    color: var(--text-secondary);
+}
+
+.auth-redirect a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.auth-redirect a:hover {
+    color: var(--neon-purple);
+    text-decoration: underline;
+}
+
+/* Error message */
+.auth-error {
+    background: rgba(255, 0, 128, 0.1);
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+
+.auth-error.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

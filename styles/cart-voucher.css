@@ -1,0 +1,30 @@
+/* Voucher section styling */
+.voucher-section {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.apply-voucher-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px dashed rgba(0, 245, 255, 0.4);
+    border-radius: 8px;
+    padding: 10px;
+    color: var(--neon-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.apply-voucher-btn:hover {
+    background: rgba(0, 245, 255, 0.15);
+    border-color: var(--neon-blue);
+}
+
+.voucher-icon {
+    font-size: 1.1rem;
+}

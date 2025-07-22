@@ -1,0 +1,91 @@
+/* Discount Styles */
+
+/* Menu Item Discounts */
+.menu-item.has-discount {
+    position: relative;
+    overflow: visible;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+
+.discounted-price {
+    color: var(--neon-pink);
+    font-weight: bold;
+}
+
+.discount-tag {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--neon-pink);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(255, 0, 128, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Discount Notification Banner */
+.discount-notification {
+    background: linear-gradient(45deg, rgba(255, 0, 128, 0.1), rgba(0, 245, 255, 0.1));
+    border: 1px solid rgba(255, 0, 128, 0.3);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.discount-notification-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.discount-notification-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--neon-pink);
+    margin-bottom: 5px;
+}
+
+.discount-notification-message {
+    color: var(--text-light);
+}
+
+.discount-notification-percentage {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--neon-pink);
+}

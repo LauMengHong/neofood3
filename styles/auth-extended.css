@@ -1,0 +1,151 @@
+/* Extended Auth Styles */
+
+/* Forgot Password Button */
+.forgot-password-btn {
+    background: none;
+    border: none;
+    color: var(--neon-blue);
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: underline;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.forgot-password-btn:hover {
+    color: var(--neon-pink);
+}
+
+/* Password Reset Modal */
+.password-reset-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.password-reset-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.password-reset-content {
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.password-reset-modal.active .password-reset-content {
+    transform: translateY(0);
+}
+
+.password-reset-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.password-reset-content p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--neon-pink);
+}
+
+/* Reset Steps */
+.reset-step {
+    display: none;
+}
+
+.reset-step.active {
+    display: block;
+}
+
+.reset-success {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.reset-success .success-icon {
+    font-size: 48px;
+    color: var(--neon-blue);
+    margin-bottom: 15px;
+}
+
+/* Admin Password Change */
+.password-change-section {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.password-change-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--neon-blue);
+}
+
+.password-change-form .input-group {
+    margin-bottom: 15px;
+}
+
+.password-change-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+.password-change-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+}
+
+.password-change-form button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.password-change-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+}
