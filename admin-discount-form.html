@@ -1,0 +1,36 @@
+<form class="discount-form" id="discountForm">
+    <div class="input-group">
+        <label for="discountName">Discount Name</label>
+        <input type="text" id="discountName" placeholder="Weekend Special" required>
+    </div>
+    <div class="input-group">
+        <label for="discountType">Discount Type</label>
+        <select id="discountType" required>
+            <option value="restaurant">Restaurant-specific</option>
+            <option value="global">Global (all restaurants)</option>
+        </select>
+    </div>
+    <div class="input-group" id="restaurantSelectGroup">
+        <label for="discountRestaurant">Restaurant</label>
+        <select id="discountRestaurant" required>
+            <!-- Restaurants will be loaded here -->
+        </select>
+    </div>
+    <div class="input-group">
+        <label for="discountPercentage">Discount Percentage (%)</label>
+        <input type="number" id="discountPercentage" min="1" max="99" value="15" required>
+    </div>
+    <div class="input-group">
+        <label for="discountStartDate">Start Date</label>
+        <input type="date" id="discountStartDate" required>
+    </div>
+    <div class="input-group">
+        <label for="discountEndDate">End Date</label>
+        <input type="date" id="discountEndDate" required>
+    </div>
+    <div class="input-group">
+        <label for="discountDescription">Description</label>
+        <textarea id="discountDescription" placeholder="Special weekend discount" required></textarea>
+    </div>
+    <button type="submit" id="saveDiscountBtn">Create Discount</button>
+</form>

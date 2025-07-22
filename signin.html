@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoFood - Sign In</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="styles/auth-extended.css">
+    <script src="scripts/theme-loader.js"></script>
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    
+    <nav class="floating-nav">
+        <div class="nav-brand">NeoFood</div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="signup.html" class="nav-link">Sign Up</a>
+        </div>
+    </nav>
+
+    <section class="auth-section">
+        <div class="auth-container glass">
+            <h1>Sign In</h1>
+            <p class="auth-subtitle">Welcome back to NeoFood</p>
+            
+            <form id="signinForm" class="auth-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                
+                <button type="submit" class="auth-button">Sign In</button>
+                <button type="button" class="forgot-password-btn" id="forgotPasswordBtn">Forgot Password?</button>
+            </form>
+            
+            <p class="auth-redirect">
+                Don't have an account? <a href="signup.html">Sign Up</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Password Reset Modal -->
+    <div class="password-reset-modal" id="passwordResetModal">
+        <div class="password-reset-content glass">
+            <button class="close-modal">&times;</button>
+            <h2>Reset Password</h2>
+            
+            <!-- Step 1: Enter Email -->
+            <div class="reset-step active" id="resetStep1">
+                <p>Enter your email address to reset your password.</p>
+                <div class="input-group">
+                    <label for="resetEmail">Email</label>
+                    <input type="email" id="resetEmail" required>
+                </div>
+                <button type="button" class="auth-button" id="sendResetBtn">Send Reset Link</button>
+            </div>
+            
+            <!-- Step 2: Enter New Password -->
+            <div class="reset-step" id="resetStep2">
+                <p>Enter your new password.</p>
+                <div class="input-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmNewPassword">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword" required>
+                </div>
+                <button type="button" class="auth-button" id="resetPasswordBtn">Reset Password</button>
+            </div>
+            
+            <!-- Step 3: Success -->
+            <div class="reset-step" id="resetStep3">
+                <div class="reset-success">
+                    <div class="success-icon">✓</div>
+                    <h3>Password Reset Successful</h3>
+                    <p>Your password has been reset successfully.</p>
+                    <button type="button" class="auth-button" id="backToLoginBtn">Back to Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="copyright-footer">
+        <div class="copyright-text">
+            © 2023 NeoFood. All rights reserved. Developed by Lau Meng Hong.
+        </div>
+        <div class="copyright-contact">
+            Contact: 011-18580620 | 012-4107210 | <a href="mailto:laumenghong01@gmail.com" class="social-link">laumenghong01@gmail.com</a>
+            | Instagram: <a href="https://instagram.com/jaydenlauemnghong" target="_blank" class="social-link">@jaydenlauemnghong</a>
+        </div>
+    </footer>
+
+    <script src="scripts/setup-admin.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-system.js"></script>
+    <script src="scripts/user-validator.js"></script>
+    <script src="scripts/session-cleaner.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/password-reset.js"></script>
+    <script src="scripts/copyright-remover.js"></script>
+</body>
+</html>

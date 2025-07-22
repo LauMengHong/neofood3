@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoFood - Admin Dashboard</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="stylesheet" href="styles/admin-extended.css">
+    <link rel="stylesheet" href="styles/admin-discount-modal.css">
+    <link rel="stylesheet" href="styles/admin-delete.css">
+    <link rel="stylesheet" href="styles/admin-menu.css">
+    <script src="scripts/theme-loader.js"></script>
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    
+    <nav class="floating-nav">
+        <div class="nav-brand">NeoFood Admin</div>
+        <div class="nav-links">
+            <a href="#" class="nav-link active" data-section="orders">Orders</a>
+            <a href="#" class="nav-link" data-section="restaurants">Restaurants</a>
+            <a href="#" class="nav-link" data-section="users">Users</a>
+            <a href="#" class="nav-link" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Orders Section -->
+    <section class="admin-section active" id="orders-section">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>Order Management</h1>
+                <div class="admin-stats">
+                    <div class="stat-card glass">
+                        <div class="stat-value" id="totalOrders">0</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-value" id="pendingOrders">0</div>
+                        <div class="stat-label">Pending</div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-value" id="completedOrders">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="orders-filter">
+                <div class="filter-btn active" data-filter="all">All Orders</div>
+                <div class="filter-btn" data-filter="pending">Pending</div>
+                <div class="filter-btn" data-filter="processing">Processing</div>
+                <div class="filter-btn" data-filter="delivered">Delivered</div>
+            </div>
+            
+            <div class="orders-list" id="ordersList">
+                <!-- Orders will be loaded here -->
+                <div class="loading-spinner">Loading orders...</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Restaurants Section -->
+    <section class="admin-section" id="restaurants-section">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>Restaurant Management</h1>
+                <div class="admin-actions">
+                    <button class="add-btn glass" id="addDiscountBtn">+ Add Discount</button>
+                    <button class="add-btn glass" id="addRestaurantBtn">+ Add Restaurant</button>
+                </div>
+            </div>
+            
+            <div class="active-discounts" id="activeDiscounts">
+                <!-- Active discounts will be shown here -->
+            </div>
+            
+            <div class="restaurants-list" id="restaurantsList">
+                <!-- Restaurants will be loaded here -->
+                <div class="loading-spinner">Loading restaurants...</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Users Section -->
+    <section class="admin-section" id="users-section">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>User Management</h1>
+                <div class="admin-stats">
+                    <div class="stat-card glass">
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="users-filter">
+                <div class="filter-btn active" data-filter="all">All Users</div>
+                <div class="filter-btn" data-filter="active">Active</div>
+                <div class="filter-btn" data-filter="inactive">Inactive</div>
+            </div>
+            
+            <div class="users-list" id="usersList">
+                <!-- Users will be loaded here -->
+                <div class="loading-spinner">Loading users...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Detail Modal -->
+    <div class="modal-overlay" id="orderModal" style="display: none;">
+        <div class="modal-content glass">
+            <button class="close-modal">&times;</button>
+            <h2>Order Details</h2>
+            <div class="order-detail-content" id="orderDetailContent">
+                <!-- Order details will be loaded here -->
+            </div>
+            <div class="order-actions">
+                <button class="action-btn process-btn" id="processOrderBtn" onclick="updateOrderStatusDirect(window.currentOrderId, 'processing')">Process Order</button>
+                <button class="action-btn deliver-btn" id="deliverOrderBtn" onclick="updateOrderStatusDirect(window.currentOrderId, 'delivered')">Mark as Delivered</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Restaurant Modal -->
+    <div class="modal-overlay" id="restaurantModal" style="display: none;">
+        <div class="modal-content glass">
+            <button class="close-modal">&times;</button>
+            <h2 id="restaurantModalTitle">Add Restaurant</h2>
+            <form class="restaurant-form" id="restaurantForm">
+                <div class="input-group">
+                    <label for="restaurantName">Restaurant Name</label>
+                    <input type="text" id="restaurantName" required>
+                </div>
+                <div class="input-group">
+                    <label for="restaurantCuisine">Cuisine Type</label>
+                    <input type="text" id="restaurantCuisine" required>
+                </div>
+                <div class="input-group">
+                    <label for="restaurantIcon">Icon (Emoji)</label>
+                    <input type="text" id="restaurantIcon" placeholder="🍕" required>
+                </div>
+                <div class="input-group">
+                    <label for="restaurantRating">Rating (1-5)</label>
+                    <input type="number" id="restaurantRating" min="1" max="5" step="0.1" required>
+                </div>
+                <div class="input-group">
+                    <label for="deliveryTime">Delivery Time (minutes)</label>
+                    <input type="text" id="deliveryTime" placeholder="20-30" required>
+                </div>
+                <div class="input-group">
+                    <label for="deliveryFee">Delivery Fee ($)</label>
+                    <input type="number" id="deliveryFee" min="0" step="0.01" required>
+                </div>
+                <div class="input-group">
+                    <label for="restaurantDescription">Description</label>
+                    <textarea id="restaurantDescription" required></textarea>
+                </div>
+                <button type="submit" id="saveRestaurantBtn">Save Restaurant</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Discount Modal -->
+    <div class="modal-overlay" id="discountModal" style="display: none;">
+        <div class="modal-content glass">
+            <button class="close-modal">&times;</button>
+            <h2>Create Special Offer</h2>
+            <p class="modal-subtitle">Set up discounts for your restaurants</p>
+            <form class="discount-form" id="discountForm">
+                <div class="input-group">
+                    <label for="discountName">Discount Name</label>
+                    <input type="text" id="discountName" placeholder="Weekend Special" required>
+                </div>
+                <div class="input-group">
+                    <label for="discountType">Discount Type</label>
+                    <select id="discountType" required>
+                        <option value="restaurant">Restaurant-specific</option>
+                        <option value="global">Global (all restaurants)</option>
+                    </select>
+                </div>
+                <div class="input-group" id="restaurantSelectGroup">
+                    <label for="discountRestaurant">Restaurant</label>
+                    <select id="discountRestaurant" required>
+                        <!-- Restaurants will be loaded here -->
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="discountPercentage">Discount Percentage (%)</label>
+                    <input type="number" id="discountPercentage" min="1" max="99" value="15" required>
+                </div>
+                <div class="input-group">
+                    <label for="discountStartDate">Start Date</label>
+                    <input type="date" id="discountStartDate" required>
+                </div>
+                <div class="input-group">
+                    <label for="discountEndDate">End Date</label>
+                    <input type="date" id="discountEndDate" required>
+                </div>
+                <div class="input-group">
+                    <label for="discountDescription">Description</label>
+                    <textarea id="discountDescription" placeholder="Special weekend discount" required></textarea>
+                </div>
+                <button type="submit" id="saveDiscountBtn">Create Special Offer</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- User Detail Modal -->
+    <div class="modal-overlay" id="userDetailModal" style="display: none;">
+        <div class="modal-content glass">
+            <button class="close-modal">&times;</button>
+            <h2>User Details</h2>
+            <div class="user-details" id="userDetailContent">
+                <!-- User details will be loaded here -->
+            </div>
+            
+            <div class="password-change-section">
+                <h3>Change User Password</h3>
+                <form class="password-change-form" id="passwordChangeForm">
+                    <div class="input-group">
+                        <label for="adminNewPassword">New Password</label>
+                        <input type="password" id="adminNewPassword" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="adminConfirmPassword">Confirm Password</label>
+                        <input type="password" id="adminConfirmPassword" required>
+                    </div>
+                    <button type="button" id="changePasswordBtn">Change Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer">
+        <!-- Notifications will be added here -->
+    </div>
+
+    <footer class="copyright-footer">
+        <div class="copyright-text">
+            © 2023 NeoFood. All rights reserved. Developed by Lau Meng Hong.
+        </div>
+        <div class="copyright-contact">
+            Contact: 011-18580620 | 012-4107210 | <a href="mailto:laumenghong01@gmail.com" class="social-link">laumenghong01@gmail.com</a>
+            | Instagram: <a href="https://instagram.com/jaydenlauemnghong" target="_blank" class="social-link">@jaydenlauemnghong</a>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-system.js"></script>
+    <script src="scripts/restaurant-sync.js"></script>
+    <script src="scripts/admin-notifications.js"></script>
+    <script src="scripts/admin.js"></script>
+    <script src="scripts/auth-check.js"></script>
+    <script src="scripts/direct-auth.js"></script>
+    <script src="scripts/menu-sync.js"></script>
+    <script src="scripts/admin-extended.js"></script>
+    <script src="scripts/discount-animation.js"></script>
+    <script src="scripts/admin-discounts.js"></script>
+    <script src="scripts/admin-password.js"></script>
+    <script src="scripts/admin-orders.js"></script>
+    <script src="scripts/admin-vouchers.js"></script>
+    <script src="scripts/direct-order-actions.js"></script>
+    <script src="scripts/clear-orders.js"></script>
+    <script src="scripts/admin-menu.js"></script>
+    <script src="scripts/copyright-remover.js"></script>
+</body>
+</html>

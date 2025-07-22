@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Sushi - NeoFood</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/review.css">
+    <link rel="stylesheet" href="styles/review-update.css">
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    
+    <nav class="floating-nav">
+        <div class="nav-brand">NeoFood</div>
+        <div class="nav-links">
+            <a href="home.html" class="nav-link">← Back</a>
+            <a href="cart.html" class="nav-link">Cart <span class="cart-count">0</span></a>
+        </div>
+    </nav>
+
+    <section class="restaurant-header">
+        <div class="restaurant-banner">
+            <div class="banner-content">
+                <h1 class="restaurant-name">Cyber Sushi</h1>
+                <p class="restaurant-details">Japanese • Premium Quality</p>
+                <div class="restaurant-stats">
+                    <span class="rating">⭐ 4.8</span>
+                    <span class="delivery-time">🕒 25-35 min</span>
+                    <span class="delivery-fee">🚚 $2.99</span>
+                </div>
+            </div>
+            <div class="restaurant-icon">🍣</div>
+        </div>
+    </section>
+
+    <section class="menu-section">
+        <div class="menu-container">
+            <div class="menu-category">
+                <h2 class="category-title">Menu Items</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-info">
+                                <h3>Neon Dragon Roll</h3>
+                                <p class="item-description">Spicy tuna, avocado, topped with eel and neon sauce</p>
+                            </div>
+                            <div class="item-price">$18.99</div>
+                        </div>
+                        <div class="item-actions">
+                            <div class="item-rating">⭐ 4.9</div>
+                            <button class="add-to-cart-btn" onclick="addToCart1()">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-info">
+                                <h3>Cyber Rainbow Roll</h3>
+                                <p class="item-description">California roll topped with assorted sashimi</p>
+                            </div>
+                            <div class="item-price">$16.99</div>
+                        </div>
+                        <div class="item-actions">
+                            <div class="item-rating">⭐ 4.7</div>
+                            <button class="add-to-cart-btn" onclick="addToCart2()">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="copyright-footer">
+        <div class="copyright-text">
+            © 2023 NeoFood. All rights reserved. Developed by Lau Meng Hong.
+        </div>
+        <div class="copyright-contact">
+            Contact: 011-18580620 | 012-4107210 | <a href="mailto:laumenghong01@gmail.com" class="social-link">laumenghong01@gmail.com</a>
+            | Instagram: <a href="https://instagram.com/jaydenlauemnghong" target="_blank" class="social-link">@jaydenlauemnghong</a>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-system.js"></script>
+    <script src="scripts/fix-order-history.js"></script>
+    <script src="scripts/add-restaurant-favorite.js"></script>
+    <script src="scripts/review-system.js"></script>
+    <script src="scripts/restaurant1-data.js"></script>
+    <script src="scripts/menu-cart.js"></script>
+    <script src="scripts/copyright-remover.js"></script>
+    
+    <script>
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('neoFoodCart') || '[]');
+            const cartCount = document.querySelector('.cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            if (totalItems > 0) {
+                cartCount.style.display = 'inline';
+            }
+        });
+    </script>
+</body>
+</html>

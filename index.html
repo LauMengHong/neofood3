@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoFood - Futuristic Food Delivery</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/landing-modal.css">
+    <script src="scripts/theme-loader.js"></script>
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="neon-grid"></div>
+        <div class="hero-content">
+            <h1 class="glitch-text" data-text="NeoFood">NeoFood</h1>
+            <p class="hero-subtitle">Experience the Future of Food Delivery</p>
+            <button class="cta-button" id="getStarted">
+                <span>Get Started</span>
+                <div class="button-glow"></div>
+            </button>
+        </div>
+        <div class="floating-elements">
+            <div class="float-item">🍕</div>
+            <div class="float-item">🍜</div>
+            <div class="float-item">🥗</div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-brand">NeoFood</div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link" id="loginBtn">Login</a>
+        </div>
+    </nav>
+    
+    <!-- Options Modal -->
+    <div class="modal-overlay" id="optionsModal">
+        <div class="modal-content glass">
+            <button class="close-btn">&times;</button>
+            <h2>Welcome to NeoFood</h2>
+            <p>Choose how you'd like to continue</p>
+            <div class="options-container">
+                <a href="signin.html" class="option-btn signin-btn">Sign In</a>
+                <a href="signup.html" class="option-btn signup-btn">Sign Up</a>
+                <a href="home.html" class="option-btn guest-btn">Continue as Guest</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-system.js"></script>
+    <script src="scripts/user-validator.js"></script>
+    <script src="scripts/session-cleaner.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/copyright-remover.js"></script>
+    <script>
+        // Show options modal on Get Started button click
+        document.addEventListener('DOMContentLoaded', function() {
+            const getStartedBtn = document.getElementById('getStarted');
+            const loginBtn = document.getElementById('loginBtn');
+            const optionsModal = document.getElementById('optionsModal');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            // Open modal when Get Started is clicked
+            getStartedBtn.addEventListener('click', function() {
+                optionsModal.classList.add('active');
+            });
+            
+            // Open modal when Login is clicked
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                optionsModal.classList.add('active');
+            });
+            
+            // Close modal when X is clicked
+            closeBtn.addEventListener('click', function() {
+                optionsModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            optionsModal.addEventListener('click', function(e) {
+                if (e.target === optionsModal) {
+                    optionsModal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
